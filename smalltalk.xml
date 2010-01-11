@@ -70,8 +70,6 @@ beginRegion="Comment"/>
 String="\#[a-zA-Z_]+[a-zA-Z0-9_]*"/>
 	<DetectChar attribute="String" context="String" char="'"
 beginRegion="String"/>
-	<DetectChar attribute="Pragma" context="Pragma" char="&lt;"
-beginRegion="Pragma"/>
         <DetectChar attribute="Brackets1" context="Level1" char="["/>
 	<DetectChar attribute="Variable" context="Variable" char="|"/>
 	
@@ -130,11 +128,6 @@ String="(\:[\s|\t]*[a-zA-Z0-9_]+[\s|\t]*)*\|"/>
 endRegion="Comment"/>
       </context>
       
-      <context attribute="Pragma" lineEndContext="#stay" name="Pragma">
-	<DetectChar attribute="Pragma" context="#pop" char="&gt;"
-endRegion="Comment"/>
-      </context>
-       
       <context attribute="Variable" lineEndContext="#stay" name="Variable">
 	<DetectChar attribute="Variable" context="#pop" char="|"
 endRegion="Variable"/>
@@ -153,7 +146,6 @@ italic="0"/>
       <itemData name="String" defStyleNum="dsString" />
       <itemData name="Symbol" defStyleNum="dsString" color="#63079d" />
       <itemData name="Comment" defStyleNum="dsComment" />
-      <itemData name="Pragma" defStyleNum="dsComment" />
       <itemData name="Brackets1"    defStyleNum="dsNormal" color="#ff0000"
 selColor="#000000" bold="1" italic="0" />
       <itemData name="Brackets2"    defStyleNum="dsNormal" color="#f31818"
