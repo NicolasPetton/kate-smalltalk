@@ -55,6 +55,7 @@ author="Nicolas Petton petton.nicolas@gmail.com" license="LGPL">
       <item> select: </item>
       <item> collect: </item>
       <item> reject: </item>
+      <item> @ </item>
     </list>
     
     <contexts>
@@ -67,12 +68,13 @@ author="Nicolas Petton petton.nicolas@gmail.com" license="LGPL">
 	<DetectChar attribute="Comment" context="Comment" char="&quot;"
 beginRegion="Comment"/>
         <RegExpr attribute="Symbol" context="#stay"
-String="\#[a-zA-Z_]+[a-zA-Z0-9_]*"/>
+String="\#[a-zA-Z0-9_]+"/>
 	<DetectChar attribute="String" context="String" char="'"
 beginRegion="String"/>
-        <DetectChar attribute="Brackets1" context="Level1" char="["/>
-	<DetectChar attribute="Variable" context="Variable" char="|"/>
-	
+        <DetectChar attribute="Brackets1" context="Level1" char="["
+beginRegion="Brackets1"/>
+        <RegExpr attribute="Variable" context="#stay"
+String="\|([\s|\t]*[a-zA-Z0-9_]+[\s|\t]*)*\|"/>
 	<RegExpr attribute="Class" context="#stay"
 String="\b([A-Z]+\w+)"/>
       </context>
@@ -83,38 +85,50 @@ String="(\:[\s|\t]*[a-zA-Z0-9_]+[\s|\t]*)*\|"/>
       </context>
 
       <context name="Level1" attribute="Normal" lineEndContext="#stay">
-        <DetectChar attribute="Brackets2" context="Level2" char="[" />
-        <DetectChar attribute="Brackets1" context="#pop" char=")]" />
+        <DetectChar attribute="Brackets2" context="Level2" char="["
+beginRegion="Brackets2" />
+        <DetectChar attribute="Brackets1" context="#pop" char="]"
+endRegion="Brackets1" />
         <IncludeRules context="Brackets" />
         <IncludeRules context="Normal Text" />
       </context>
       <context name="Level2" attribute="Normal" lineEndContext="#stay">
-        <DetectChar attribute="Brackets3" context="Level3" char="["/>
-        <DetectChar attribute="Brackets2" context="#pop" char="]" />
+        <DetectChar attribute="Brackets3" context="Level3" char="["
+beginRegion="Brackets3" />
+        <DetectChar attribute="Brackets2" context="#pop" char="]"
+endRegion="Brackets2" />
         <IncludeRules context="Brackets" />
         <IncludeRules context="Normal Text" />
       </context>
       <context name="Level3" attribute="Normal" lineEndContext="#stay">
-        <DetectChar attribute="Brackets4" context="Level4" char="[" />
-        <DetectChar attribute="Brackets3" context="#pop" char="]" />
+        <DetectChar attribute="Brackets4" context="Level4" char="["
+beginRegion="Brackets4" />
+        <DetectChar attribute="Brackets3" context="#pop" char="]"
+endRegion="Brackets3" />
         <IncludeRules context="Brackets" />
         <IncludeRules context="Normal Text" />
       </context>
       <context name="Level4" attribute="Normal" lineEndContext="#stay">
-        <DetectChar attribute="Brackets5" context="Level5" char="[" />
-        <DetectChar attribute="Brackets4" context="#pop" char="]" />
+        <DetectChar attribute="Brackets5" context="Level5" char="["
+beginRegion="Brackets5" />
+        <DetectChar attribute="Brackets4" context="#pop" char="]"
+endRegion="Brackets4" />
         <IncludeRules context="Brackets" />
         <IncludeRules context="Normal Text" />
       </context>
       <context name="Level5" attribute="Normal" lineEndContext="#stay">
-        <DetectChar attribute="Brackets6" context="Level6" char="[" />
-        <DetectChar attribute="Brackets5" context="#pop" char="]" />
+        <DetectChar attribute="Brackets6" context="Level6" char="["
+beginRegion="Brackets6" />
+        <DetectChar attribute="Brackets5" context="#pop" char="]"
+endRegion="Brackets5" />
         <IncludeRules context="Brackets" />
         <IncludeRules context="Normal Text" />
       </context>
       <context name="Level6" attribute="Normal" lineEndContext="#stay">
-        <DetectChar attribute="Brackets1" context="Level1" char="[" />
-        <DetectChar attribute="Brackets6" context="#pop" char="]" />
+        <DetectChar attribute="Brackets1" context="Level1" char="["
+beginRegion="Brackets1" />
+        <DetectChar attribute="Brackets6" context="#pop" char="]"
+endRegion="Brackets6" />
         <IncludeRules context="Brackets" />
         <IncludeRules context="Normal Text" />
       </context>
