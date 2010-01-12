@@ -67,20 +67,19 @@ author="Nicolas Petton petton.nicolas@gmail.com" license="LGPL">
 	<keyword attribute="Method" context="#stay" String="methods"/>
 	<DetectChar attribute="Comment" context="Comment" char="&quot;"
 beginRegion="Comment"/>
-        <RegExpr attribute="Symbol" context="#stay"
-String="\#[a-zA-Z0-9_]+"/>
+        <RegExpr attribute="Symbol" context="#stay" String="\#[a-zA-Z0-9_]+"/>
+        <RegExpr attribute="Char" context="#stay" String="\$."/>
 	<DetectChar attribute="String" context="String" char="'"
 beginRegion="String"/>
         <DetectChar attribute="Brackets1" context="Level1" char="["
 beginRegion="Brackets1"/>
         <RegExpr attribute="Variable" context="#stay"
 String="\|([\s|\t]*[a-zA-Z0-9_]+[\s|\t]*)*\|"/>
-	<RegExpr attribute="Class" context="#stay"
-String="\b([A-Z]+\w+)"/>
+	<RegExpr attribute="Class" context="#stay" String="\b([A-Z]+\w+)"/>
       </context>
 
       <context name="Brackets" attribute="Brackets">
-        <RegExpr attribute="Variable" context="#stay"
+        <RegExpr attribute="Variable2" context="#stay"
 String="(\:[\s|\t]*[a-zA-Z0-9_]+[\s|\t]*)*\|"/>
       </context>
 
@@ -142,11 +141,6 @@ endRegion="Brackets6" />
 endRegion="Comment"/>
       </context>
       
-      <context attribute="Variable" lineEndContext="#stay" name="Variable">
-	<DetectChar attribute="Variable" context="#pop" char="|"
-endRegion="Variable"/>
-      </context>     
-       
     </contexts>
     
     <itemDatas>
@@ -157,16 +151,18 @@ endRegion="Variable"/>
       <itemData name="Class" defStyleNum="dsKeyword" color="#9d222d" bold="1"
 italic="0"/>
       <itemData name="Variable" defStyleNum="dsNormal" color= "#008000" />
+      <itemData name="Variable2" defStyleNum="dsNormal" color= "#008000" />
       <itemData name="String" defStyleNum="dsString" />
+      <itemData name="Char" defStyleNum="dsChar" />
       <itemData name="Symbol" defStyleNum="dsString" color="#63079d" />
       <itemData name="Comment" defStyleNum="dsComment" />
       <itemData name="Brackets1"    defStyleNum="dsNormal" color="#ff0000"
 selColor="#000000" bold="1" italic="0" />
-      <itemData name="Brackets2"    defStyleNum="dsNormal" color="#f31818"
+      <itemData name="Brackets2"    defStyleNum="dsNormal" color="#008800"
 selColor="#000000" bold="1" italic="0" />
       <itemData name="Brackets3"    defStyleNum="dsNormal" color="#888800"
 selColor="#000000" bold="1" italic="0" />
-      <itemData name="Brackets4"    defStyleNum="dsNormal" color="#008800"
+      <itemData name="Brackets4"    defStyleNum="dsNormal" color="#f31818"
 selColor="#000000" bold="1" italic="0" />
       <itemData name="Brackets5"    defStyleNum="dsNormal" color="#000088"
 selColor="#000000" bold="1" italic="0" />
